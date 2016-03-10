@@ -5,12 +5,12 @@ app = Flask(__name__)
 raspistill_cmd = [
     "sudo",
     "raspistill",
-    "--mode", "6",
-    "-q", "60",
-    "-w", "640",
-    "-h", "480",
-    "--nopreview"
-    "-ISO", "100",
+    "--mode", "4",
+    "-q", "80",
+    "-w", "1296",
+    "-h", "972",
+    "--nopreview",
+    "--ISO", "100",
     "--shutter", "16000",
     "--drc", "high",
     "--awb", "fluorescent",
