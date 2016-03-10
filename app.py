@@ -8,7 +8,7 @@ def index():
 
 @app.route("/snap/")
 def snap():
-    subprocess.call(["raspistill", "-o", "static/currentimg.jpg"])
+    subprocess.call(["sudo", "raspistill", "--nopreview", "-w", "1296", "-h", "972", "-q", "5", "-o", "static/currentimg.jpg"])
     return redirect(url_for('index'))
 
 if __name__ == "__main__":
