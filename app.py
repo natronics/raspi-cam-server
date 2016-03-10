@@ -47,7 +47,7 @@ def snap():
     ax.imshow(data, cm.plasma, interpolation="bicubic")
     plt.savefig("static/currentflir.png", dpi=250)
 
-    subprocess.call("mv", "IMG_0000.json", "static/currentflir.json")
+    subprocess.call("mv -f IMG_0000.json static/currentflir.json", shell=True)
 
     return redirect(url_for('index'))
 
