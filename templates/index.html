@@ -13,7 +13,7 @@
     <a href="/snap/">Take a picture</a>
   </p>
   <div>
-   <img src="{{ url_for('static', filename='currentimg.jpg') }}">
+   <img src="{{ url_for('static', filename='currentimg.jpg') }}?t={{ now }}">
   </div>
  </body>
 </html>

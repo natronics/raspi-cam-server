@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, url_for
 import subprocess
+import datetime
 app = Flask(__name__)
 
 raspistill_cmd = [
@@ -21,7 +22,7 @@ raspistill_cmd = [
 
 @app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template('index.html', now=datetime.datetime.now())
 
 
 @app.route("/snap/")
