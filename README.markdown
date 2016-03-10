@@ -21,3 +21,9 @@ Run
     $ python app.py
 
 Then open a browser an point it towards your raspi <http://raspberrypi:5000>
+
+
+
+[flask]: http://flask.pocoo.org/ "Flask is a microframework for Python"
+[sub]: https://docs.python.org/2/library/subprocess.html
+[raspistill]: https://www.raspberrypi.org/documentation/usage/camera/raspicam/raspistill.md

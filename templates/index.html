@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <title>Raspi Camera</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+ </head>
+ <body>
+
+  <h1>Camera</h1>
+  <hr>
+  <p>
+    <a href="/snap/">Take a picture</a>
+  </p>
+  <div>
+   <img src="{{ url_for('static', filename='currentimg.jpg') }}">
+  </div>
+ </body>
+</html>
