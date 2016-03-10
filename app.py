@@ -1,6 +1,10 @@
 from flask import Flask, render_template, redirect, url_for
 import subprocess
 import datetime
+import matplotlib.pyplot as plt
+from matplotlib.pyplot import cm
+import json
+
 app = Flask(__name__)
 
 raspistill_cmd = [
@@ -19,6 +23,8 @@ raspistill_cmd = [
     "-o", "static/currentimg.jpg",
 ]
 
+flir_cmd = ["sudo", "raspberrypi_capture"]
+
 
 @app.route("/")
 def index():
@@ -28,6 +34,21 @@ def index():
 @app.route("/snap/")
 def snap():
     subprocess.call(raspistill_cmd)
+    subprocess.call(flir_cmd)
+
+    with open('IMG_0000.json') as f:
+        data = json.loads(f.read())['image']
+
+    fig = plt.figure(frameon=False)
+    fig.set_size_inches(4,3)
+    ax = plt.Axes(fig, [0., 0., 1., 1.])
+    ax.set_axis_off()
+    fig.add_axes(ax)
+    ax.imshow(data, cm.plasma, interpolation="bicubic")
+    plt.savefig("static/currentflir.png", dpi=250)
+
+    subprocess.call("mv", "IMG_0000.json", "static/currentflir.json")
+
     return redirect(url_for('index'))
 
 
