@@ -9,7 +9,7 @@
  <body>
 
   <header class="container">
-    <h1 class="title">Camera <a class="button is-primary" href="/snap/">Take a picture</a></h1>
+    <h1 class="title">Camera <a id="snap" class="button is-primary" href="/snap/">Take a picture</a></h1>
     <hr>
   </header>
   <div class="container is-fluid">
@@ -23,5 +23,13 @@
    </div> 
    <a href="{{ url_for('static', filename='currentflir.json') }}">Download raw FLiR data</a>
   </div>
+  <script>
+    document.getElementById('snap').onclick = function() {
+        var overlay = document.createElement('div');
+        overlay.className = "overlay hero is-primary";
+        overlay.innerHTML = "Taking Photos...";
+        document.childNodes[1].childNodes[2].appendChild(overlay);
+    };
+  </script>
  </body>
 </html>

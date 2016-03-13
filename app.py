@@ -33,6 +33,7 @@ def index():
 
 @app.route("/snap/")
 def snap():
+    
     subprocess.call(raspistill_cmd)
     subprocess.call(flir_cmd)
 
@@ -44,11 +45,11 @@ def snap():
     ax = plt.Axes(fig, [0., 0., 1., 1.])
     ax.set_axis_off()
     fig.add_axes(ax)
-    ax.imshow(data, cm.inferno, interpolation="bicubic", vmin=7400, vmax=7700)
+    ax.imshow(data, cm.inferno, interpolation="bicubic", vmin=7350, vmax=7800)
     plt.savefig("static/currentflir.png", dpi=250)
 
     subprocess.call("mv -f IMG_0000.json static/currentflir.json", shell=True)
-
+    
     return redirect(url_for('index'))
 
 
