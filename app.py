@@ -15,11 +15,11 @@ raspistill_cmd = [
     "-w", "1296",
     "-h", "972",
     "--nopreview",
-    "--ISO", "100",
-    "--shutter", "16000",
-    "--drc", "high",
+#    "--ISO", "100",
+#    "--shutter", "16000",
+#    "--drc", "high",
     "--awb", "fluorescent",
-    "--exposure", "night",
+#    "--exposure", "night",
     "-o", "static/currentimg.jpg",
 ]
 
@@ -44,7 +44,7 @@ def snap():
     ax = plt.Axes(fig, [0., 0., 1., 1.])
     ax.set_axis_off()
     fig.add_axes(ax)
-    ax.imshow(data, cm.inferno, interpolation="bicubic", vmin=7450, vmax=7680)
+    ax.imshow(data, cm.inferno, interpolation="bicubic", vmin=7400, vmax=7700)
     plt.savefig("static/currentflir.png", dpi=250)
 
     subprocess.call("mv -f IMG_0000.json static/currentflir.json", shell=True)

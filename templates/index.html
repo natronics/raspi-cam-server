@@ -3,18 +3,24 @@
  <head>
   <meta charset="utf-8">
   <title>Raspi Camera</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='bulma.min.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
  </head>
  <body>
 
-  <h1>Camera</h1>
-  <hr>
-  <p>
-    <a href="/snap/">Take a picture</a>
-  </p>
-  <div>
-   <img width="500" height="375" src="{{ url_for('static', filename='currentimg.jpg') }}?t={{ now }}">
-   <img width="500" height="375" src="{{ url_for('static', filename='currentflir.png') }}?t={{ now }}">
+  <header class="container">
+    <h1 class="title">Camera <a class="button is-primary" href="/snap/">Take a picture</a></h1>
+    <hr>
+  </header>
+  <div class="container is-fluid">
+   <div class="columns">
+    <div class="column">
+     <img src="{{ url_for('static', filename='currentimg.jpg') }}?t={{ now }}">
+    </div>
+    <div class="column">
+     <img src="{{ url_for('static', filename='currentflir.png') }}?t={{ now }}">
+    </div>
+   </div> 
    <a href="{{ url_for('static', filename='currentflir.json') }}">Download raw FLiR data</a>
   </div>
  </body>
